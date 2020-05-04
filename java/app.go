@@ -12,6 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// This work was modified by Two Six Labs, LLC and is sponsored by a subcontract agreement with
+// Raytheon BBN Technologies Corp. under Prime Contract No. FA8750-16-C-0006 with the Air Force
+// Research Laboratory (AFRL).
+//
+// The Government has unlimited rights to use, modify, reproduce, release, perform, display, or disclose
+// computer software or computer software documentation marked with this legend. Any reproduction of
+// technical data, computer software, or portions thereof marked with this legend must also reproduce
+// this marking.
+//
+// Copyright (C) 2020 Two Six Labs, LLC.  All rights reserved.
+
 package java
 
 // This file contains the module types for compiling Android apps.
@@ -174,7 +185,7 @@ func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	if ctx.ModuleName() == "framework-res" {
 		// framework-res.apk is installed as system/framework/framework-res.apk
-		ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"), ctx.ModuleName()+".apk", a.outputFile)
+		ctx.InstallFile(android.PathForModuleInstall(ctx, "framework.unwoven"), ctx.ModuleName()+".apk", a.outputFile)
 	} else if Bool(a.appProperties.Privileged) {
 		ctx.InstallFile(android.PathForModuleInstall(ctx, "priv-app"), ctx.ModuleName()+".apk", a.outputFile)
 	} else {

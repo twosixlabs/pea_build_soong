@@ -12,6 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// This work was modified by Two Six Labs, LLC and is sponsored by a subcontract agreement with
+// Raytheon BBN Technologies Corp. under Prime Contract No. FA8750-16-C-0006 with the Air Force
+// Research Laboratory (AFRL).
+//
+// The Government has unlimited rights to use, modify, reproduce, release, perform, display, or disclose
+// computer software or computer software documentation marked with this legend. Any reproduction of
+// technical data, computer software, or portions thereof marked with this legend must also reproduce
+// this marking.
+//
+// Copyright (C) 2020 Two Six Labs, LLC.  All rights reserved.
+
 package java
 
 import (
@@ -183,7 +194,7 @@ func (j *Javadoc) addDeps(ctx android.BottomUpMutatorContext) {
 		sdkDep := decodeSdkDep(ctx, String(j.properties.Sdk_version))
 		if sdkDep.useDefaultLibs {
 			ctx.AddDependency(ctx.Module(), bootClasspathTag, config.DefaultBootclasspathLibraries...)
-			ctx.AddDependency(ctx.Module(), libTag, []string{"ext", "framework"}...)
+			ctx.AddDependency(ctx.Module(), libTag, []string{"ext", "framework.unwoven"}...)
 		} else if sdkDep.useModule {
 			ctx.AddDependency(ctx.Module(), bootClasspathTag, sdkDep.module)
 		}
